@@ -1,0 +1,6 @@
+import { developer, developerActions } from '../../data/developer'
+
+export default function DeveloperContact({ config = developer }) {
+  const actions = developerActions(config)
+  return <section className="contact-developer container" id="developer-enquiry" aria-labelledby="developer-heading" tabIndex={-1}><div><p className="eyebrow">02 / Developer enquiry — website projects</p><h2 id="developer-heading">The website<br />behind the places.</h2></div><div><p className="contact-developer-intro">Havenza is a portfolio project demonstrating a custom real-estate website experience.</p><p>For web design, development and freelance projects{config.name ? ` with ${config.name}` : ''}. This contact is separate from the fictional property collection and is not a property-agent service.</p>{actions.length ? <nav aria-label="Developer contact">{actions.map(action => <a className="line-link" key={action.label} href={action.href} target={action.external ? '_blank' : undefined} rel={action.external ? 'noopener noreferrer' : undefined}>{action.label} <span aria-hidden="true">↗</span>{action.external && <span className="sr-only"> (opens in a new tab)</span>}</a>)}</nav> : <p className="developer-unconfigured">Developer contact details are not published in this demonstration.</p>}</div></section>
+}
