@@ -4,7 +4,11 @@ A fictional Malaysian property discovery experience built as a frontend web desi
 
 **Portfolio demonstration only.** All eight residences and prices are fictional. Photography is illustrative, not actual listings. Havenza is not an estate agency and offers no properties for sale or rent. Enquiry forms do not send, persist or log entered information. Developer contact, when configured, is for website and freelance work only.
 
-Stage 7 production preparation and Stage 7.5 visual refinement are approved by the owner. Verified developer contacts are configured. Not deployed; no Live Demo URL is available yet.
+Stage 7 production preparation and Stage 7.5 visual refinement are approved by the owner. Verified developer contacts are configured, and Havenza is live on Vercel.
+
+## Live Demo
+
+[View Live Demo](https://havenza-real-estate-template.vercel.app/)
 
 ## Local development
 
@@ -89,16 +93,17 @@ Verified public website/freelance developer contact:
 
 No portfolio URL was supplied, so that field remains empty. These are public developer contacts, not property-agent, sales, employee or customer-service details. External links use `noopener noreferrer`; demo enquiries remain separate and do not send or store information. Empty/invalid configuration values do not create dead links.
 
-## Metadata and production preparation
+## Metadata and production configuration
 
 - `index.html` contains branded title, description, favicon, theme colour, Open Graph and Twitter card metadata.
 - `public/social-preview.png` is a local 1200 × 630 brand graphic, not additional property photography.
 - `src/data/siteMetadata.js` updates route titles/descriptions/social text and missing-page indexing rules.
-- Copy `.env.example` to `.env.local`. Set `VITE_SITE_URL` only when the real production HTTPS origin is confirmed. Leave it blank during preparation. Do not include a path, credentials, query or hash. `VITE_` values are public; never put secrets there.
-- With a configured origin, the build inserts absolute social-image URLs into HTML; client navigation sets canonical/OG URLs. Without an origin, no canonical/OG page URL is invented and image URLs remain relative. Production configuration is still required.
+- The production origin is `https://havenza-real-estate-template.vercel.app`. `VITE_SITE_URL` is configured to this value in Vercel Production, and the deployment was redeployed with that environment variable.
+- For local configuration, copy `.env.example` to `.env.local` and use the same origin when needed. Do not include a path, credentials, query or hash. `VITE_` values are public; never put secrets there.
+- With the configured origin, the build inserts absolute social-image URLs into HTML; client navigation sets canonical/OG URLs. In environments without an origin, no canonical/OG page URL is invented and image URLs remain relative.
 - This is a client-rendered SPA, not a prerendered site. Non-JavaScript crawlers receive shared Havenza metadata, not property-specific previews. Client `noindex` is not an HTTP status; unknown SPA routes may return HTTP 200.
-- `vercel.json` prepares the fallback to `index.html`. No hosting action has been taken. Verify deep-link refreshes, asset handling and HTTP behavior on the eventual host.
-- Add the actual Live Demo link after deployment and approval. No sitemap is generated against an unconfirmed domain.
+- Vercel hosts the production deployment. `vercel.json` supplies the SPA fallback to `index.html`, supporting direct route access. The owner manually verified primary routes and direct SPA/deep-link refresh behavior after deployment.
+- No sitemap is currently generated.
 
 ## Automated verification
 
@@ -118,8 +123,15 @@ These data, server-rendered markup, source-guard and handler checks do **not** p
 
 Lint, build and all seven suites passed again after Stage 7.5. See [STAGE7_5_REPORT.md](STAGE7_5_REPORT.md) for density changes and browser-review limits, and [STAGE7_REPORT.md](STAGE7_REPORT.md) for the preceding takeover audit. Earlier reports document historical work, not current browser approval.
 
-## Before publishing
+## Production status
 
-The owner has approved the visual result and supplied verified developer contact. Confirm the production origin for `VITE_SITE_URL` when available, and use [MANUAL_QA.md](MANUAL_QA.md) for final contact-link and eventual hosting checks. Historical unchecked entries are not automated evidence of browser testing. Re-run lint, build and all suites after fixes.
+- The visual result is approved by the owner.
+- Verified developer contact is configured.
+- `VITE_SITE_URL` is configured in Vercel Production, and the deployment is live.
+- Primary routes and direct SPA/deep-link refreshes were manually checked by the owner after deployment.
+- Lint, build and all seven automated verification suites passed.
+- The project is stored in Git and pushed to GitHub.
 
-Deployment, Git initialization/commits and GitHub push are separate next steps requiring owner instruction. No code licence has been selected; photography has separate source terms recorded in PHOTOGRAPHY.md.
+Use [MANUAL_QA.md](MANUAL_QA.md) as the ongoing QA checklist. Historical unchecked entries are not automated evidence of browser testing. Re-run lint, build and all suites after fixes.
+
+No code licence has been selected; photography has separate source terms recorded in PHOTOGRAPHY.md.
